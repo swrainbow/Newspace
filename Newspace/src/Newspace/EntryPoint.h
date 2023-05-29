@@ -13,7 +13,7 @@ int main(int argc, char** argv)
 	NSPACE_INFO("Core var={0}", a);
 
 	auto app = Newspace::createApplication();
-	app->run();
+	app->Run();
 	delete app;
 
 }

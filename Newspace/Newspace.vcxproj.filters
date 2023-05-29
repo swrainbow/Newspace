@@ -4,6 +4,15 @@
     <Filter Include="Newspace">
       <UniqueIdentifier>{BB1772F4-A7E4-CCFF-D0FD-BAA7BC29028E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Newspace\Events">
+      <UniqueIdentifier>{3F63DE89-ABEE-4B4E-B4FF-CE42200AA84E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Newspace.h" />
@@ -16,10 +25,28 @@
     <ClInclude Include="src\Newspace\EntryPoint.h">
       <Filter>Newspace</Filter>
     </ClInclude>
+    <ClInclude Include="src\Newspace\Events\ApplicationEvent.h">
+      <Filter>Newspace\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Newspace\Events\Event.h">
+      <Filter>Newspace\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Newspace\Events\KeyEvent.h">
+      <Filter>Newspace\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Newspace\Events\MouseEvent.h">
+      <Filter>Newspace\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Newspace\Log.h">
       <Filter>Newspace</Filter>
     </ClInclude>
-    <ClInclude Include="src\test.h" />
+    <ClInclude Include="src\Newspace\Window.h">
+      <Filter>Newspace</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\nspacepch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Newspace\Application.cpp">
@@ -28,6 +55,9 @@
     <ClCompile Include="src\Newspace\Log.cpp">
       <Filter>Newspace</Filter>
     </ClCompile>
-    <ClCompile Include="src\test.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nspacepch.cpp" />
   </ItemGroup>
 </Project>

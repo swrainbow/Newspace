@@ -1,3 +1,6 @@
 [submodule "Newspace/vendor/spdlog"]
 	path = Newspace/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "Newspace/vendor/GLFW"]
+	path = Newspace/vendor/GLFW
+	url = https://github.com/TheCherno/glfw

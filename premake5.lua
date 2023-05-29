@@ -8,26 +8,42 @@ workspace "Newspace"
 		"Dist"
 	}
 
-
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Newspace/vendor/GLFW/include"
+
+include "Newspace/vendor/GLFW"
 
 project "Newspace"
 	location "Newspace"
 	kind "SharedLib"
 	language "C++"
 
-	targetdir("bin/" .. outputdir .. "/%{prj.name}")
-	objdir("bin-int/" .. outputdir .. "/%{prj.name}")
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	pchheader "nspacepch.h"
+	pchsource "Newspace/src/nspacepch.cpp"
 
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs
 	{
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/src",
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links 
+	{ 
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -45,7 +61,6 @@ project "Newspace"
 		{
 			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
 		}
-		
 
 	filter "configurations:Debug"
 		defines "NSPACE_DEBUG"
@@ -53,25 +68,24 @@ project "Newspace"
 
 	filter "configurations:Release"
 		defines "NSPACE_RELEASE"
-		symbols "On"
+		optimize "On"
 
 	filter "configurations:Dist"
-		defines "NSPACE_Dist"
-		symbols "On"
-
+		defines "NSPACE_DIST"
+		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
 
-	targetdir("bin/" .. outputdir .. "/%{prj.name}")
-	objdir("bin-int/" .. outputdir .. "/%{prj.name}")
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs
@@ -92,7 +106,7 @@ project "Sandbox"
 
 		defines
 		{
-			"NSPACE_PLATFORM_WINDOWS",
+			"NSPACE_PLATFORM_WINDOWS"
 		}
 
 	filter "configurations:Debug"
@@ -101,9 +115,8 @@ project "Sandbox"
 
 	filter "configurations:Release"
 		defines "NSPACE_RELEASE"
-		symbols "On"
+		optimize "On"
 
 	filter "configurations:Dist"
-		defines "NSPACE_Dist"
-		symbols "On"
-
+		defines "NSPACE_DIST"
+		optimize "On"

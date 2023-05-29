@@ -2,4 +2,4 @@
 bin/
 bin-int/
 .vs/
-Newspace/vendor
+/Newspace/vendor/
