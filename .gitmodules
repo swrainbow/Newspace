@@ -1,0 +1,3 @@
+[submodule "Newspace/vendor/spdlog"]
+	path = Newspace/vendor/spdlog
+	url = https://github.com/gabime/spdlog
