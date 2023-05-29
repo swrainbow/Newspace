@@ -37,6 +37,12 @@
     <ClInclude Include="src\Newspace\Events\MouseEvent.h">
       <Filter>Newspace\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Newspace\Layer.h">
+      <Filter>Newspace</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Newspace\LayerStack.h">
+      <Filter>Newspace</Filter>
+    </ClInclude>
     <ClInclude Include="src\Newspace\Log.h">
       <Filter>Newspace</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Newspace\Application.cpp">
+      <Filter>Newspace</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Newspace\Layer.cpp">
+      <Filter>Newspace</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Newspace\LayerStack.cpp">
       <Filter>Newspace</Filter>
     </ClCompile>
     <ClCompile Include="src\Newspace\Log.cpp">

@@ -64,14 +64,17 @@ project "Newspace"
 
 	filter "configurations:Debug"
 		defines "NSPACE_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "NSPACE_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "NSPACE_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
@@ -111,12 +114,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "NSPACE_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "NSPACE_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "NSPACE_DIST"
+		buildoptions "/MD"
 		optimize "On"
