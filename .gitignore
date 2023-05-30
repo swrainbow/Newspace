@@ -2,4 +2,6 @@
 bin/
 bin-int/
 .vs/
-/Newspace/vendor/
+/Newspace/vendor/GLFW/
+/Newspace/vendor/spdlog/
+

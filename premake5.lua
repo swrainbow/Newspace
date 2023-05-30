@@ -13,8 +13,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Newspace/vendor/GLFW/include"
+IncludeDir["Glad"] = "Newspace/vendor/Glad/include"
 
 include "Newspace/vendor/GLFW"
+include "Newspace/vendor/Glad"
+
 
 project "Newspace"
 	location "Newspace"
@@ -37,12 +40,14 @@ project "Newspace"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links 
 	{ 
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -54,7 +59,8 @@ project "Newspace"
 		defines
 		{
 			"NSPACE_PLATFORM_WINDOWS",
-			"NSPACE_BUILD_DLL"
+			"NSPACE_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
