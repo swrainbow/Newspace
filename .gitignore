@@ -4,4 +4,7 @@ bin-int/
 .vs/
 /Newspace/vendor/GLFW/
 /Newspace/vendor/spdlog/
+/Newspace/vendor/imgui/
+/Newspace/vendor/Glad/
+
 
