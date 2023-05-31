@@ -1353,6 +1353,7 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Newspace\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Newspace\Renderer\VertexArray.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Newspace\Application.cpp">
@@ -1387,5 +1388,6 @@
     <ClCompile Include="src\Newspace\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Newspace\Renderer\VertextArray.cpp" />
   </ItemGroup>
 </Project>
