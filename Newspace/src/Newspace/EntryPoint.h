@@ -1,7 +1,7 @@
 #pragma once
 
 #ifdef NSPACE_PLATFORM_WINDOWS
-extern Newspace::Application* Newspace::createApplication();
+extern Newspace::Application* Newspace::CreateApplication();
 
 int main(int argc, char** argv)
 {
@@ -12,7 +12,7 @@ int main(int argc, char** argv)
 	int a = 1;
 	NSPACE_INFO("Core var={0}", a);
 
-	auto app = Newspace::createApplication();
+	auto app = Newspace::CreateApplication();
 	app->Run();
 	delete app;
 

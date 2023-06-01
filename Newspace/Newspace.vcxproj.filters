@@ -1359,6 +1359,7 @@
     <ClInclude Include="src\Newspace\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Newspace\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Newspace\Core\Timestep.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Newspace\Application.cpp">

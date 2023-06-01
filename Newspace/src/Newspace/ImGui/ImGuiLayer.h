@@ -3,7 +3,7 @@
 #include "Newspace/Layer.h"
 
 namespace Newspace {
-	class NSPACE_API ImGuiLayer : public Layer
+	class ImGuiLayer : public Layer
 	{
 	public:
 		ImGuiLayer();

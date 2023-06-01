@@ -146,6 +146,7 @@
     <ClInclude Include="src\Newspace.h" />
     <ClInclude Include="src\Newspace\Application.h" />
     <ClInclude Include="src\Newspace\Core.h" />
+    <ClInclude Include="src\Newspace\Core\Timestep.h" />
     <ClInclude Include="src\Newspace\EntryPoint.h" />
     <ClInclude Include="src\Newspace\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Newspace\Events\Event.h" />
