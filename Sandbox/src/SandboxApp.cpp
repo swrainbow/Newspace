@@ -13,13 +13,13 @@ public:
 
 	void OnEvent(Newspace::Event& event) override
 	{
-		if (event.GetEventType() == Newspace::EventType::KeyPressed)
-		{
-			Newspace::KeyPressedEvent& e = (Newspace::KeyPressedEvent&)event;
-			if (e.GetKeyCode() == HZ_KEY_TAB)
-				NSPACE_TRACE("Tab key is pressed (event)!");
-			NSPACE_TRACE("(char)e.GetKeyCode()");
-		}
+		//if (event.GetEventType() == Newspace::EventType::KeyPressed)
+		//{
+		//	Newspace::KeyPressedEvent& e = (Newspace::KeyPressedEvent&)event;
+		//	if (e.GetKeyCode() == HZ_KEY_TAB)
+		//		NSPACE_TRACE("Tab key is pressed (event)!");
+		//	NSPACE_TRACE("(char)e.GetKeyCode()");
+		//}
 	}
 
 	
