@@ -10,6 +10,8 @@
 #include "Newspace/Renderer/Shader.h"
 #include "Newspace/Renderer/Buffer.h"
 #include "Newspace/Renderer/VertexArray.h"
+#include "Newspace/Renderer/OrthographicCamera.h"
+
 
 
 namespace Newspace {
@@ -40,6 +42,8 @@ namespace Newspace {
 
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};

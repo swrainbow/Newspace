@@ -18,11 +18,11 @@ namespace Newspace {
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		NSPACE_CORE_ASSERT(status, "Failed to initialize Glad!");
-
+		//std::cout << " Vendor: ==============" << glGetString(GL_VENDOR) << std::endl;
 		//NSPACE_CORE_INFO("OpenGL Info:");
-		//NSPACE_CORE_INFO("  Vendor: {0}", glGetString(GL_VENDOR));
-		//NSPACE_CORE_INFO("  Renderer: {0}", glGetString(GL_RENDERER));
-		//NSPACE_CORE_INFO("  Version: {0}", glGetString(GL_VERSION));
+		//NSPACE_CORE_TRACE("  Vendor: {0}", glGetString(GL_VENDOR));
+		//NSPACE_CORE_TRACE("  Renderer: {0}", glGetString(GL_RENDERER));
+		//NSPACE_CORE_TRACE("  Version: {0}", glGetString(GL_VERSION));
 
 	}
 
