@@ -1,6 +1,6 @@
 #pragma once
 #include "nspacepch.h"
-#include "Newspace/Core.h"
+#include "Newspace/Core/Core.h"
 
 namespace Newspace {
 

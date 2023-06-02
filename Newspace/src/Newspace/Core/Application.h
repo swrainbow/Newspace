@@ -3,7 +3,7 @@
 #include "Core.h"
 
 #include "Window.h"
-#include "Newspace/LayerStack.h"
+#include "Newspace/Core/LayerStack.h"
 #include "Newspace/Events/Event.h"
 #include "Newspace/Events/ApplicationEvent.h"
 

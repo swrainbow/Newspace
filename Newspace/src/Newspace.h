@@ -2,18 +2,18 @@
 
 // For use by Newspace applications
 
-#include "Newspace/Application.h"
-#include "Newspace/Layer.h"
-#include "Newspace/Log.h"
+#include "Newspace/Core/Application.h"
+#include "Newspace/Core/Layer.h"
+#include "Newspace/Core/Log.h"
 
 #include "Newspace/Core/Timestep.h"
 
-#include "Newspace/Input.h"
-#include "Newspace/KeyCodes.h"
-#include "Newspace/MouseButtonCodes.h"
+#include "Newspace/Core/Input.h"
+#include "Newspace/Core/KeyCodes.h"
+#include "Newspace/Core/MouseButtonCodes.h"
 
 #include "Newspace/ImGui/ImGuiLayer.h"
-#include "Newspace/OrthographicCameraController.h"
+#include "Newspace/Renderer/OrthographicCameraController.h"
 
 
 // ---Renderer------------------------
@@ -30,5 +30,5 @@
 
 
 // ---Entry Point---------------------
-#include "Newspace/EntryPoint.h"
+#include "Newspace/Core/EntryPoint.h"
 // -----------------------------------

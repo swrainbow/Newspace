@@ -1,8 +1,8 @@
 #include "nspacepch.h"
 #include "OrthographicCameraController.h"
 
-#include "Newspace/Input.h"
-#include "Newspace/KeyCodes.h"
+#include "Newspace/Core/Input.h"
+#include "Newspace/Core/KeyCodes.h"
 
 namespace Newspace {
 

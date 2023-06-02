@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "Newspace/Core.h"
+#include "Newspace/Core/Core.h"
 
 namespace Newspace {
 

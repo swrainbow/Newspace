@@ -57,16 +57,16 @@
     <ClInclude Include="src\Newspace.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Newspace\Application.h">
+    <ClInclude Include="src\Newspace\Core\Application.h">
       <Filter>src\Newspace</Filter>
     </ClInclude>
-    <ClInclude Include="src\Newspace\Core.h">
+    <ClInclude Include="src\Newspace\Core\Core.h">
       <Filter>src\Newspace</Filter>
     </ClInclude>
     <ClInclude Include="src\Newspace\Core\Timestep.h">
       <Filter>src\Newspace\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Newspace\EntryPoint.h">
+    <ClInclude Include="src\Newspace\Core\EntryPoint.h">
       <Filter>src\Newspace</Filter>
     </ClInclude>
     <ClInclude Include="src\Newspace\Events\ApplicationEvent.h">
@@ -84,22 +84,22 @@
     <ClInclude Include="src\Newspace\ImGui\ImGuiLayer.h">
       <Filter>src\Newspace\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Newspace\Input.h">
+    <ClInclude Include="src\Newspace\Core\Input.h">
       <Filter>src\Newspace</Filter>
     </ClInclude>
-    <ClInclude Include="src\Newspace\KeyCodes.h">
+    <ClInclude Include="src\Newspace\Core\KeyCodes.h">
       <Filter>src\Newspace</Filter>
     </ClInclude>
-    <ClInclude Include="src\Newspace\Layer.h">
+    <ClInclude Include="src\Newspace\Core\Layer.h">
       <Filter>src\Newspace</Filter>
     </ClInclude>
-    <ClInclude Include="src\Newspace\LayerStack.h">
+    <ClInclude Include="src\Newspace\Core\LayerStack.h">
       <Filter>src\Newspace</Filter>
     </ClInclude>
-    <ClInclude Include="src\Newspace\Log.h">
+    <ClInclude Include="src\Newspace\Core\Log.h">
       <Filter>src\Newspace</Filter>
     </ClInclude>
-    <ClInclude Include="src\Newspace\MouseButtonCodes.h">
+    <ClInclude Include="src\Newspace\Core\MouseButtonCodes.h">
       <Filter>src\Newspace</Filter>
     </ClInclude>
     <ClInclude Include="src\Newspace\Renderer\Buffer.h">
@@ -129,7 +129,7 @@
     <ClInclude Include="src\Newspace\Renderer\VertexArray.h">
       <Filter>src\Newspace\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Newspace\Window.h">
+    <ClInclude Include="src\Newspace\Core\Window.h">
       <Filter>src\Newspace</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
@@ -1410,10 +1410,10 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Newspace\OrthographicCameraController.h" />
+    <ClInclude Include="src\Newspace\Renderer\OrthographicCameraController.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Newspace\Application.cpp">
+    <ClCompile Include="src\Newspace\Core\Application.cpp">
       <Filter>src\Newspace</Filter>
     </ClCompile>
     <ClCompile Include="src\Newspace\ImGui\ImGuiBuild.cpp">
@@ -1422,13 +1422,13 @@
     <ClCompile Include="src\Newspace\ImGui\ImGuiLayer.cpp">
       <Filter>src\Newspace\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Newspace\Layer.cpp">
+    <ClCompile Include="src\Newspace\Core\Layer.cpp">
       <Filter>src\Newspace</Filter>
     </ClCompile>
-    <ClCompile Include="src\Newspace\LayerStack.cpp">
+    <ClCompile Include="src\Newspace\Core\LayerStack.cpp">
       <Filter>src\Newspace</Filter>
     </ClCompile>
-    <ClCompile Include="src\Newspace\Log.cpp">
+    <ClCompile Include="src\Newspace\Core\Log.cpp">
       <Filter>src\Newspace</Filter>
     </ClCompile>
     <ClCompile Include="src\Newspace\Renderer\Buffer.cpp">
@@ -1485,6 +1485,6 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Newspace\OrthographicCameraController.cpp" />
+    <ClCompile Include="src\Newspace\Renderer\OrthographicCameraController.cpp" />
   </ItemGroup>
 </Project>

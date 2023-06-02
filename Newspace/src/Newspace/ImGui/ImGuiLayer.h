@@ -1,6 +1,10 @@
 #pragma once
 
-#include "Newspace/Layer.h"
+#include "Newspace/Core/Layer.h"
+
+#include "Newspace/Events/ApplicationEvent.h"
+#include "Newspace/Events/KeyEvent.h"
+#include "Newspace/Events/MouseEvent.h"
 
 namespace Newspace {
 	class ImGuiLayer : public Layer

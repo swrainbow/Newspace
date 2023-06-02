@@ -1,7 +1,7 @@
 #include "nspacepch.h"
 #include "Application.h"
 
-#include "Newspace/Log.h"
+#include "Newspace/Core/Log.h"
 
 #include "Newspace/Renderer/Renderer.h"
 

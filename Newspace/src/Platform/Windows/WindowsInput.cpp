@@ -1,7 +1,7 @@
 #include "nspacepch.h"
 #include "WindowsInput.h"
 
-#include "Newspace/Application.h"
+#include "Newspace/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 namespace Newspace {

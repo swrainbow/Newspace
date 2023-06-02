@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Newspace/Input.h"
+#include "Newspace/Core/Input.h"
 
 namespace Newspace {
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Newspace/Window.h"
+#include "Newspace/Core/Window.h"
 #include <GLFW/glfw3.h>
 
 namespace Newspace {
