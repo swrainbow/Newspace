@@ -92,7 +92,8 @@ public:
 			}
 		)";
 
-		m_Shader.reset(Newspace::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = Newspace::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
+
 
 		std::string flatColorShaderVertexSrc = R"(
 			#version 330 core
@@ -126,18 +127,15 @@ public:
 			}
 		)";
 
-		m_FlatColorShader.reset(Newspace::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+		m_FlatColorShader = Newspace::Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
 
-
-		//m_TextureShader.reset(Newspace::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
-		m_TextureShader.reset(Newspace::Shader::Create("assets/shaders/Texture.glsl"));
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 		m_Texture = Newspace::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_ChernoLogoTexture = Newspace::Texture2D::Create("assets/textures/ChernoLogo.png");
 
-
-		std::dynamic_pointer_cast<Newspace::OpenGLShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<Newspace::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+		std::dynamic_pointer_cast<Newspace::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<Newspace::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Newspace::Timestep ts) override
@@ -180,10 +178,14 @@ public:
 			}
 		}
 
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+
 		m_Texture->Bind();
-		Newspace::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
+		//m_Texture->Bind();
+		Newspace::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		m_ChernoLogoTexture->Bind();
-		Newspace::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Newspace::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		// Triangle
 		// Hazel::Renderer::Submit(m_Shader, m_VertexArray);
 
@@ -201,6 +203,7 @@ public:
 	{
 	}
 private:
+	Newspace::ShaderLibrary m_ShaderLibrary;
 	Newspace::Ref<Newspace::Shader> m_Shader;
 	Newspace::Ref<Newspace::VertexArray> m_VertexArray;
 
