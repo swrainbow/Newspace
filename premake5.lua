@@ -17,6 +17,8 @@ IncludeDir["GLFW"] = "Newspace/vendor/GLFW/include"
 IncludeDir["Glad"] = "Newspace/vendor/Glad/include"
 IncludeDir["ImGui"] = "Newspace/vendor/imgui"
 IncludeDir["glm"] = "Newspace/vendor/glm"
+IncludeDir["stb_image"] = "Newspace/vendor/stb_image"
+
 
 include "Newspace/vendor/GLFW"
 include "Newspace/vendor/Glad"
@@ -41,6 +43,8 @@ project "Newspace"
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp"
 	}
 
 	defines
@@ -55,6 +59,7 @@ project "Newspace"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.stb_image}",
 		"%{IncludeDir.glm}"
 	}
 

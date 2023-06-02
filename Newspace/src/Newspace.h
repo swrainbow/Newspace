@@ -20,6 +20,7 @@
 
 #include "Newspace/Renderer/Buffer.h"
 #include "Newspace/Renderer/Shader.h"
+#include "Newspace/Renderer/Texture.h"
 #include "Newspace/Renderer/VertexArray.h"
 
 #include "Newspace/Renderer/OrthographicCamera.h"
