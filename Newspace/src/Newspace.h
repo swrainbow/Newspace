@@ -13,6 +13,8 @@
 #include "Newspace/MouseButtonCodes.h"
 
 #include "Newspace/ImGui/ImGuiLayer.h"
+#include "Newspace/OrthographicCameraController.h"
+
 
 // ---Renderer------------------------
 #include "Newspace/Renderer/Renderer.h"
@@ -25,6 +27,7 @@
 
 #include "Newspace/Renderer/OrthographicCamera.h"
 // -----------------------------------
+
 
 // ---Entry Point---------------------
 #include "Newspace/EntryPoint.h"
