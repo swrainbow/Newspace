@@ -1,6 +1,8 @@
 #include "nspacepch.h"
 #include "Renderer.h"
 #include "Platform/OpenGL/OpenGLShader.h"
+#include "Renderer2D.h"
+
 
 namespace Newspace {
 
@@ -9,6 +11,7 @@ namespace Newspace {
 	void Renderer::Init()
 	{
 		RenderCommand::Init();
+		Renderer2D::Init();
 	}
 
 

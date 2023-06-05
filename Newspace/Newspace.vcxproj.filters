@@ -1411,6 +1411,7 @@
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
     <ClInclude Include="src\Newspace\Renderer\OrthographicCameraController.h" />
+    <ClInclude Include="src\Newspace\Renderer\Renderer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Newspace\Core\Application.cpp">
@@ -1486,5 +1487,6 @@
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
     <ClCompile Include="src\Newspace\Renderer\OrthographicCameraController.cpp" />
+    <ClCompile Include="src\Newspace\Renderer\Renderer2D.cpp" />
   </ItemGroup>
 </Project>
