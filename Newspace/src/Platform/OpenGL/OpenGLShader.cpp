@@ -208,6 +208,14 @@ namespace Newspace {
 		UploadUniformInt(name, value);
 	}
 
+	void OpenGLShader::SetFloat(const std::string& name, float value)
+	{
+		NSPACE_PROFILE_FUNCTION();
+
+		UploadUniformFloat(name, value);
+	}
+
+
 	void OpenGLShader::SetFloat3(const std::string& name, const glm::vec3& value)
 	{
 		NSPACE_PROFILE_FUNCTION();

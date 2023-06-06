@@ -10,7 +10,7 @@
 
 #include "Newspace/Core/Input.h"
 #include "Newspace/Core/KeyCodes.h"
-#include "Newspace/Core/MouseButtonCodes.h"
+#include "Newspace/Core/MouseCodes.h"
 
 #include "Newspace/ImGui/ImGuiLayer.h"
 #include "Newspace/Renderer/OrthographicCameraController.h"

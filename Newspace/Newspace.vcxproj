@@ -152,7 +152,7 @@
     <ClInclude Include="src\Newspace\Core\Layer.h" />
     <ClInclude Include="src\Newspace\Core\LayerStack.h" />
     <ClInclude Include="src\Newspace\Core\Log.h" />
-    <ClInclude Include="src\Newspace\Core\MouseButtonCodes.h" />
+    <ClInclude Include="src\Newspace\Core\MouseCodes.h" />
     <ClInclude Include="src\Newspace\Core\Timestep.h" />
     <ClInclude Include="src\Newspace\Core\Window.h" />
     <ClInclude Include="src\Newspace\Debug\Instrumentor.h" />
@@ -601,9 +601,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Newspace\Core\Application.cpp" />
+    <ClCompile Include="src\Newspace\Core\Input.cpp" />
     <ClCompile Include="src\Newspace\Core\Layer.cpp" />
     <ClCompile Include="src\Newspace\Core\LayerStack.cpp" />
     <ClCompile Include="src\Newspace\Core\Log.cpp" />
+    <ClCompile Include="src\Newspace\Core\Window.cpp" />
     <ClCompile Include="src\Newspace\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Newspace\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Newspace\Renderer\Buffer.cpp" />
