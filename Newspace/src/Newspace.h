@@ -1,7 +1,7 @@
 #pragma once
 
 // For use by Newspace applications
-
+#include "Newspace/Core/Core.h"
 #include "Newspace/Core/Application.h"
 #include "Newspace/Core/Layer.h"
 #include "Newspace/Core/Log.h"
@@ -26,6 +26,7 @@
 #include "Newspace/Renderer/Shader.h"
 #include "Newspace/Renderer/Texture.h"
 #include "Newspace/Renderer/VertexArray.h"
+
 
 #include "Newspace/Renderer/OrthographicCamera.h"
 // -----------------------------------

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "OrthographicCamera.h"
-#include "Texture.h"
+#include "Newspace/Renderer/OrthographicCamera.h"
+#include "Newspace/Renderer/Texture.h"
 
 
 namespace Newspace {

@@ -1,5 +1,7 @@
 #pragma once
+
 #include "nspacepch.h"
+
 #include "Newspace/Core/Core.h"
 
 namespace Newspace {
@@ -34,7 +36,7 @@ namespace Newspace {
 
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
-	class NSPACE_API Event
+	class Event
 	{
 	public:
 		bool Handled = false;

@@ -1,7 +1,7 @@
 #include "nspacepch.h"
-#include "Texture.h"
+#include "Newspace/Renderer/Texture.h"
 
-#include "Renderer.h"
+#include "Newspace/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLTexture.h"
 
 namespace Newspace {

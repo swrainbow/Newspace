@@ -3,9 +3,7 @@
 #include <Newspace/Core/EntryPoint.h>
 // -----------------------------------
 
-#include "Platform/OpenGL/OpenGLShader.h"
-
-#include "imgui/imgui.h"
+#include <imgui/imgui.h>
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -26,8 +24,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 
-		Newspace::Ref<Newspace::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(Newspace::VertexBuffer::Create(vertices, sizeof(vertices)));
+		Newspace::Ref<Newspace::VertexBuffer> vertexBuffer = Newspace::VertexBuffer::Create(vertices, sizeof(vertices));
 		Newspace::BufferLayout layout = {
 			{ Newspace::ShaderDataType::Float3, "a_Position" },
 			{ Newspace::ShaderDataType::Float4, "a_Color" }
@@ -36,8 +33,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		Newspace::Ref<Newspace::IndexBuffer> indexBuffer;
-		indexBuffer.reset(Newspace::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		Newspace::Ref<Newspace::IndexBuffer> indexBuffer = Newspace::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		m_SquareVA = Newspace::VertexArray::Create();
@@ -49,8 +45,7 @@ public:
 			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
-		Newspace::Ref<Newspace::VertexBuffer> squareVB;
-		squareVB.reset(Newspace::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		Newspace::Ref<Newspace::VertexBuffer> squareVB = Newspace::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 		squareVB->SetLayout({
 			{ Newspace::ShaderDataType::Float3, "a_Position" },
 			{ Newspace::ShaderDataType::Float2, "a_TexCoord" }
@@ -58,8 +53,7 @@ public:
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		Newspace::Ref<Newspace::IndexBuffer> squareIB;
-		squareIB.reset(Newspace::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		Newspace::Ref<Newspace::IndexBuffer> squareIB = Newspace::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
 		std::string vertexSrc = R"(
@@ -139,8 +133,8 @@ public:
 		m_Texture = Newspace::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_ChernoLogoTexture = Newspace::Texture2D::Create("assets/textures/ChernoLogo.png");
 
-		std::dynamic_pointer_cast<Newspace::OpenGLShader>(textureShader)->Bind();
-		std::dynamic_pointer_cast<Newspace::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
+		textureShader->Bind();
+		textureShader->SetInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Newspace::Timestep ts) override
@@ -156,9 +150,8 @@ public:
 		Newspace::Renderer::BeginScene(m_CameraController.GetCamera());
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
-
-		std::dynamic_pointer_cast<Newspace::OpenGLShader>(m_FlatColorShader)->Bind();
-		std::dynamic_pointer_cast<Newspace::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+		m_FlatColorShader->Bind();
+		m_FlatColorShader->SetFloat3("u_Color", m_SquareColor);
 
 		for (int y = 0; y < 20; y++)
 		{

@@ -1,9 +1,9 @@
 #include "nspacepch.h"
-#include "ImGuiLayer.h"
+#include "Newspace/ImGui/ImGuiLayer.h"
 
-#include "imgui.h"
-#include "examples/imgui_impl_glfw.h"
-#include "examples/imgui_impl_opengl3.h"
+#include <imgui.h>
+#include <examples/imgui_impl_glfw.h>
+#include <examples/imgui_impl_opengl3.h>
 
 #include "Newspace/Core/Application.h"
 
@@ -24,6 +24,7 @@ namespace Newspace {
 
 	void ImGuiLayer::OnAttach()
 	{
+		NSPACE_PROFILE_FUNCTION();
 		// Setup Dear ImGui context
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -57,6 +58,7 @@ namespace Newspace {
 
 	void ImGuiLayer::OnDetach()
 	{
+		NSPACE_PROFILE_FUNCTION();
 		ImGui_ImplOpenGL3_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
 		ImGui::DestroyContext();
@@ -64,6 +66,8 @@ namespace Newspace {
 
 	void ImGuiLayer::Begin()
 	{
+		NSPACE_PROFILE_FUNCTION();
+
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
@@ -71,6 +75,8 @@ namespace Newspace {
 
 	void ImGuiLayer::End()
 	{
+		NSPACE_PROFILE_FUNCTION();
+
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();
 		io.DisplaySize = ImVec2((float)app.GetWindow().GetWidth(), (float)app.GetWindow().GetHeight());

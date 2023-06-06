@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Core.h"
+#include "Newspace/Core/Core.h"
 
-#include "Window.h"
+#include "Newspace/Core/Window.h"
 #include "Newspace/Core/LayerStack.h"
 #include "Newspace/Events/Event.h"
 #include "Newspace/Events/ApplicationEvent.h"
@@ -11,15 +11,15 @@
 
 #include "Newspace/ImGui/ImGuiLayer.h"
 
+int main(int argc, char** argv);
+
 namespace Newspace {
 
 	class Application
 	{
 	public:
 		Application();
-		virtual ~Application() = default;
-
-		void Run();
+		virtual ~Application();
 
 		void OnEvent(Event& e);
 
@@ -30,6 +30,7 @@ namespace Newspace {
 
 		inline static Application& Get() { return *s_Instance; }
 	private:
+		void Run();
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
 	private:
@@ -41,6 +42,7 @@ namespace Newspace {
 		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
+		friend int ::main(int argc, char** argv);
 	};
 
 	// To be defined in CLIENT

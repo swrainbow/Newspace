@@ -14,6 +14,8 @@
 #include <unordered_set>
 
 #include "Newspace/Core/Log.h"
+#include "Newspace/Debug/Instrumentor.h"
+
 
 #ifdef HZ_PLATFORM_WINDOWS
 #include <Windows.h>

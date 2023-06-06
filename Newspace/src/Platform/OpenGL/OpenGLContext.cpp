@@ -1,5 +1,5 @@
 #include "nspacepch.h"
-#include "OpenGLContext.h"
+#include "Platform/OpenGL/OpenGLContext.h"
 
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
@@ -15,6 +15,8 @@ namespace Newspace {
 
 	void OpenGLContext::Init()
 	{
+		NSPACE_PROFILE_FUNCTION();
+
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		NSPACE_CORE_ASSERT(status, "Failed to initialize Glad!");
@@ -28,6 +30,8 @@ namespace Newspace {
 
 	void OpenGLContext::SwapBuffers()
 	{
+		NSPACE_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_WindowHandle);
 	}
 

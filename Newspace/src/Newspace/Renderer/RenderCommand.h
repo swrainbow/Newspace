@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RendererAPI.h"
+#include "Newspace/Renderer/RendererAPI.h"
 
 namespace Newspace {
 
@@ -32,7 +32,7 @@ namespace Newspace {
 			s_RendererAPI->DrawIndexed(vertexArray);
 		}
 	private:
-		static RendererAPI* s_RendererAPI;
+		static Scope<RendererAPI> s_RendererAPI;
 	};
 
 }

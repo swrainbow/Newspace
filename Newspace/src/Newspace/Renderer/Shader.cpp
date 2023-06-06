@@ -1,7 +1,7 @@
 #include "nspacepch.h"
-#include "Shader.h"
+#include "Newspace/Renderer/Shader.h"
 
-#include "Renderer.h"
+#include "Newspace/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLShader.h"
 
 namespace Newspace {
@@ -11,7 +11,7 @@ namespace Newspace {
 		switch (Renderer::GetAPI())
 		{
 		case RendererAPI::API::None:    NSPACE_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-		case RendererAPI::API::OpenGL:  return std::make_shared<OpenGLShader>(filepath);
+		case RendererAPI::API::OpenGL:  return CreateRef<OpenGLShader>(filepath);
 		}
 
 		NSPACE_CORE_ASSERT(false, "Unknown RendererAPI!");
@@ -23,7 +23,7 @@ namespace Newspace {
 		switch (Renderer::GetAPI())
 		{
 		case RendererAPI::API::None:    NSPACE_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-		case RendererAPI::API::OpenGL:  return std::make_shared<OpenGLShader>(name, vertexSrc, fragmentSrc);
+		case RendererAPI::API::OpenGL:  return CreateRef<OpenGLShader>(name, vertexSrc, fragmentSrc);
 		}
 
 		NSPACE_CORE_ASSERT(false, "Unknown RendererAPI!");

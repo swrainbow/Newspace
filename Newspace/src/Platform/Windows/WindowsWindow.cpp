@@ -1,13 +1,16 @@
 #include "nspacepch.h"
-#include "WindowsWindow.h"
+#include "Platform/Windows/WindowsWindow.h"
+#include "Newspace/Renderer/Renderer.h"
 
 #include "Newspace/Events/ApplicationEvent.h"
 #include "Newspace/Events/MouseEvent.h"
 #include "Newspace/Events/KeyEvent.h"
+#include "Platform/OpenGL/OpenGLContext.h"
 
 #include <glad/glad.h>
 
 namespace Newspace {
+	static uint8_t s_GLFWWindowCount = 0;
 
 	static bool s_GLFWInitialized = false;
 
@@ -16,42 +19,55 @@ namespace Newspace {
 		NSPACE_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
 	}
 
-	Window* Window::Create(const WindowProps& props)
+	Scope<Window> Window::Create(const WindowProps& props)
 	{
-		return new WindowsWindow(props);
+		return CreateScope<WindowsWindow>(props);
 	}
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)
 	{
+		NSPACE_PROFILE_FUNCTION();
+
 		Init(props);
 	}
 
 	WindowsWindow::~WindowsWindow()
 	{
+		NSPACE_PROFILE_FUNCTION();
+
 		Shutdown();
 	}
 
 	void WindowsWindow::Init(const WindowProps& props)
 	{
+		NSPACE_PROFILE_FUNCTION();
+
 		m_Data.Title = props.Title;
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
 
 		NSPACE_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
-		if (!s_GLFWInitialized)
+		if (s_GLFWWindowCount == 0)
 		{
-			// TODO: glfwTerminate on system shutdown
+			NSPACE_PROFILE_SCOPE("glfwInit");
 			int success = glfwInit();
 			NSPACE_CORE_ASSERT(success, "Could not intialize GLFW!");
 			glfwSetErrorCallback(GLFWErrorCallback);
-			s_GLFWInitialized = true;
 		}
 
-		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		NSPACE_CORE_ASSERT(status, "Failed to initialize Glad!");
+		{
+			NSPACE_PROFILE_SCOPE("glfwCreateWindow");
+#if defined(NSPACE_DEBUG)
+			if (Renderer::GetAPI() == RendererAPI::API::OpenGL)
+				glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
+#endif
+			m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
+			++s_GLFWWindowCount;
+		}
+
+		m_Context = GraphicsContext::Create(m_Window);
+		m_Context->Init();
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
@@ -148,17 +164,29 @@ namespace Newspace {
 
 	void WindowsWindow::Shutdown()
 	{
+		NSPACE_PROFILE_FUNCTION();
+
 		glfwDestroyWindow(m_Window);
+		--s_GLFWWindowCount;
+
+		if (s_GLFWWindowCount == 0)
+		{
+			glfwTerminate();
+		}
 	}
 
 	void WindowsWindow::OnUpdate()
 	{
+		NSPACE_PROFILE_FUNCTION();
+
 		glfwPollEvents();
 		glfwSwapBuffers(m_Window);
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)
 	{
+		NSPACE_PROFILE_FUNCTION();
+
 		if (enabled)
 			glfwSwapInterval(1);
 		else

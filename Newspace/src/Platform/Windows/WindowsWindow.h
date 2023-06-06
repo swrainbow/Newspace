@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Newspace/Core/Window.h"
+#include "Newspace/Renderer/GraphicsContext.h"
+
 #include <GLFW/glfw3.h>
 
 namespace Newspace {
@@ -24,6 +26,8 @@ namespace Newspace {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		Scope<GraphicsContext> m_Context;
+
 
 		struct WindowData
 		{
