@@ -17,6 +17,6 @@
 #include "Newspace/Debug/Instrumentor.h"
 
 
-#ifdef HZ_PLATFORM_WINDOWS
+#ifdef NSPACE_PLATFORM_WINDOWS
 #include <Windows.h>
 #endif

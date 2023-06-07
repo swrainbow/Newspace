@@ -6,7 +6,7 @@
 
 namespace Newspace {
 
-	Scope<Input> Input::s_Instance = CreateScope<WindowsInput>();
+	//Scope<Input> Input::s_Instance = CreateScope<WindowsInput>();
 
 	bool WindowsInput::IsKeyPressedImpl(KeyCode  key)
 	{

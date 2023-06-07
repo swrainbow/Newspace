@@ -1,7 +1,7 @@
 #pragma once
 
 // For use by Newspace applications
-#include "Newspace/Core/Core.h"
+#include "Newspace/Core/Base.h"
 #include "Newspace/Core/Application.h"
 #include "Newspace/Core/Layer.h"
 #include "Newspace/Core/Log.h"

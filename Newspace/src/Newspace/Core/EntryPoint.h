@@ -1,5 +1,5 @@
 #pragma once
-#include "Newspace/Core/Core.h"
+#include "Newspace/Core/Base.h"
 
 #ifdef NSPACE_PLATFORM_WINDOWS
 extern Newspace::Application* Newspace::CreateApplication();

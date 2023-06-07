@@ -1,6 +1,6 @@
 #pragma once
 #include <memory>
-#include "Newspace/Core/Core.h"
+#include "Newspace/Core/Base.h"
 
 #include <spdlog/spdlog.h>
 #include <spdlog/fmt/ostr.h>

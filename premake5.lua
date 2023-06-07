@@ -49,7 +49,8 @@ project "Newspace"
 
 	defines
 	{
-		"_CRT_SECURE_NO_WARNINGS"
+		"_CRT_SECURE_NO_WARNINGS",
+		"GLFW_INCLUDE_NONE"
 	}
 
 	includedirs
@@ -78,7 +79,6 @@ project "Newspace"
 		{
 			"NSPACE_PLATFORM_WINDOWS",
 			"NSPACE_BUILD_DLL",
-			"GLFW_INCLUDE_NONE"
 		}
 
 	filter "configurations:Debug"

@@ -7,7 +7,7 @@
 
 #include "Newspace/Core/Input.h"
 
-#include <glfw/glfw3.h>
+#include <GLFW/glfw3.h>
 
 
 namespace Newspace {
@@ -60,9 +60,9 @@ namespace Newspace {
 		dispatcher.Dispatch<WindowResizeEvent>(NSPACE_BIND_EVENT_FN(Application::OnWindowResize));
 		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
 		{
-			(*it)->OnEvent(e);
 			if (e.Handled)
 				break;
+			(*it)->OnEvent(e);
 		}
 	}
 

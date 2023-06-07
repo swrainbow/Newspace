@@ -11,7 +11,7 @@ namespace Newspace {
 
 	Scope<Input> Input::Create()
 	{
-#ifdef HZ_PLATFORM_WINDOWS
+#ifdef NSPACE_PLATFORM_WINDOWS
 		return CreateScope<WindowsInput>();
 #else
 		NSPACE_CORE_ASSERT(false, "Unknown platform!");

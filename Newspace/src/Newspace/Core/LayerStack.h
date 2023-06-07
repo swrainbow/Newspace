@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Newspace/Core/Core.h"
+#include "Newspace/Core/Base.h"
 #include "Newspace/Core/Layer.h"
 
 #include <vector>

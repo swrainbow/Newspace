@@ -2,7 +2,7 @@
 
 #include "nspacepch.h"
 
-#include "Newspace/Core/Core.h"
+#include "Newspace/Core/Base.h"
 
 namespace Newspace {
 
