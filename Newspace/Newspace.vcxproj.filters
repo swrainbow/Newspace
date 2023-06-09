@@ -1435,6 +1435,8 @@
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
     <ClInclude Include="src\Newspace\Scene\Entity.h" />
+    <ClInclude Include="src\Newspace\Renderer\Camera.h" />
+    <ClInclude Include="src\Newspace\Scene\SceneCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Newspace\Core\Application.cpp">
@@ -1531,5 +1533,6 @@
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
     <ClCompile Include="src\Newspace\Scene\Entity.cpp" />
+    <ClCompile Include="src\Newspace\Scene\SceneCamera.cpp" />
   </ItemGroup>
 </Project>

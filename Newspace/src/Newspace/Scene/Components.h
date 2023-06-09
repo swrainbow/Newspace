@@ -1,6 +1,8 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include "Newspace/Renderer/Camera.h"
+#include "SceneCamera.h"
 
 namespace Newspace {
 	
@@ -37,5 +39,15 @@ namespace Newspace {
 		SpriteRendererComponent(const glm::vec4& color)
 			: Color(color) {}
 
+	};
+
+	struct CameraComponent
+	{
+		SceneCamera  Camera;
+		bool Primary = true; // TODO: think about moving to Scene
+		bool FixedAspectRatio = false;
+
+		CameraComponent() = default;
+		CameraComponent(const CameraComponent&) = default;
 	};
 }

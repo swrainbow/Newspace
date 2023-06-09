@@ -3,6 +3,7 @@
 #include "Newspace/Renderer/OrthographicCamera.h"
 
 #include "Newspace/Renderer/Texture.h"
+#include "Newspace/Renderer/Camera.h"
 
 namespace Newspace {
 
@@ -12,7 +13,8 @@ namespace Newspace {
 		static void Init();
 		static void Shutdown();
 
-		static void BeginScene(const OrthographicCamera& camera);
+		static void BeginScene(const Camera& camera, const glm::mat4& transform);
+		static void BeginScene(const OrthographicCamera& camera); // TODO: Remove
 		static void EndScene();
 		static void Flush();
 
