@@ -7,7 +7,6 @@
 
 namespace Newspace
 {
-
 	Scope<Window> Window::Create(const WindowProps& props)
 	{
 #ifdef NSPACE_PLATFORM_WINDOWS

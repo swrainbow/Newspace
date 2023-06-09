@@ -1,12 +1,16 @@
 [submodule "Newspace/vendor/spdlog"]
 	path = Newspace/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+	branch = v1.x
 [submodule "Newspace/vendor/GLFW"]
 	path = Newspace/vendor/GLFW
 	url = https://github.com/TheCherno/glfw
+	branch = master
 [submodule "Newspace/vendor/imgui"]
 	path = Newspace/vendor/imgui
 	url = https://github.com/TheCherno/imgui
+	branch = docking
 [submodule "Newspace/vendor/glm"]
 	path = Newspace/vendor/glm
 	url = https://github.com/g-truc/glm
+	branch = master

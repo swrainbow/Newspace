@@ -16,7 +16,7 @@ int main(int argc, char** argv)
 	app->Run();
 	NSPACE_PROFILE_END_SESSION();
 
-	NSPACE_PROFILE_BEGIN_SESSION("Startup", "NewspaceProfile-Shutdown.json");
+	NSPACE_PROFILE_BEGIN_SESSION("Shutdown", "NewspaceProfile-Shutdown.json");
 	delete app;
 	NSPACE_PROFILE_END_SESSION();
 }

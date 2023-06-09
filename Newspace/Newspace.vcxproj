@@ -76,11 +76,13 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>nspacepch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NSPACE_PLATFORM_WINDOWS;NSPACE_BUILD_DLL;GLFW_INCLUDE_NONE;NSPACE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;NSPACE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\stb_image;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
+      <MinimalRebuild>false</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -97,7 +99,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>nspacepch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NSPACE_PLATFORM_WINDOWS;NSPACE_BUILD_DLL;GLFW_INCLUDE_NONE;NSPACE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;NSPACE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\stb_image;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -105,6 +107,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -122,7 +125,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>nspacepch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NSPACE_PLATFORM_WINDOWS;NSPACE_BUILD_DLL;GLFW_INCLUDE_NONE;NSPACE_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;NSPACE_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\stb_image;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -130,6 +133,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -162,6 +166,7 @@
     <ClInclude Include="src\Newspace\Events\MouseEvent.h" />
     <ClInclude Include="src\Newspace\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Newspace\Renderer\Buffer.h" />
+    <ClInclude Include="src\Newspace\Renderer\Framebuffer.h" />
     <ClInclude Include="src\Newspace\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Newspace\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Newspace\Renderer\OrthographicCameraController.h" />
@@ -174,11 +179,11 @@
     <ClInclude Include="src\Newspace\Renderer\VertexArray.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Platform\Windows\WIndowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\nspacepch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -601,7 +606,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Newspace\Core\Application.cpp" />
-    <ClCompile Include="src\Newspace\Core\Input.cpp" />
     <ClCompile Include="src\Newspace\Core\Layer.cpp" />
     <ClCompile Include="src\Newspace\Core\LayerStack.cpp" />
     <ClCompile Include="src\Newspace\Core\Log.cpp" />
@@ -609,6 +613,7 @@
     <ClCompile Include="src\Newspace\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Newspace\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Newspace\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Newspace\Renderer\Framebuffer.cpp" />
     <ClCompile Include="src\Newspace\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\Newspace\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Newspace\Renderer\OrthographicCameraController.cpp" />
@@ -621,6 +626,7 @@
     <ClCompile Include="src\Newspace\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />

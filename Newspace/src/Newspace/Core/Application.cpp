@@ -15,14 +15,14 @@ namespace Newspace {
 
 	Application* Application::s_Instance = nullptr;
 
-	Application::Application()
+	Application::Application(const std::string& name)
 	{
 
 		NSPACE_PROFILE_FUNCTION();
 		NSPACE_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
-		m_Window = Window::Create();
+		m_Window = Window::Create(WindowProps(name));
 		m_Window->SetEventCallback(NSPACE_BIND_EVENT_FN(Application::OnEvent));
 		Renderer::Init();
 
@@ -50,6 +50,11 @@ namespace Newspace {
 		NSPACE_PROFILE_FUNCTION();
 		m_LayerStack.PushOverlay(layer);
 		layer->OnAttach();
+	}
+
+	void Application::Close()
+	{
+		m_Running = false;
 	}
 
 	void Application::OnEvent(Event& e)

@@ -1,6 +1,6 @@
 workspace "Newspace"
 	architecture "x86_64"
-	startproject "Sandbox"
+	startproject "Spacecap"
 
 	configurations
 	{
@@ -8,6 +8,12 @@ workspace "Newspace"
 		"Release",
 		"Dist"
 	}
+
+	flags
+	{
+		"MultiProcessorCompile"
+	}
+
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -20,9 +26,11 @@ IncludeDir["glm"] = "Newspace/vendor/glm"
 IncludeDir["stb_image"] = "Newspace/vendor/stb_image"
 
 
-include "Newspace/vendor/GLFW"
-include "Newspace/vendor/Glad"
-include "Newspace/vendor/imgui"
+group "Dependencies"
+	include "Newspace/vendor/GLFW"
+	include "Newspace/vendor/Glad"
+	include "Newspace/vendor/imgui"
+group ""
 
 project "Newspace"
 	location "Newspace"
@@ -77,8 +85,7 @@ project "Newspace"
 
 		defines
 		{
-			"NSPACE_PLATFORM_WINDOWS",
-			"NSPACE_BUILD_DLL",
+
 		}
 
 	filter "configurations:Debug"
@@ -147,3 +154,52 @@ project "Sandbox"
 		defines "NSPACE_DIST"
 		runtime "Release"
 		optimize "on"
+
+
+project "Spacecap"
+	location "Spacecap"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs
+	{
+		"Newspace/vendor/spdlog/include",
+		"Newspace/src",
+		"Newspace/vendor",
+		"%{IncludeDir.glm}"
+	}
+
+	links
+	{
+		"Newspace"
+	}
+
+	filter "system:windows"
+		systemversion "latest"
+		
+	filter "configurations:Debug"
+		defines "NSPACE_DEBUG"
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
+		defines "NSPACE_RELEASE"
+		runtime "Release"
+		optimize "on"
+
+	filter "configurations:Dist"
+		defines "NSPACE_DIST"
+		runtime "Release"
+		optimize "on"
+

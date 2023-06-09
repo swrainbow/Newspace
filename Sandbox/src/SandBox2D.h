@@ -24,6 +24,7 @@ private:
 	Newspace::Ref<Newspace::Shader> m_FlatColorShader;
 
 	Newspace::Ref<Newspace::Texture2D> m_CheckerboardTexture;
+	Newspace::Ref<Newspace::Framebuffer> m_Framebuffer;
 
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 };
