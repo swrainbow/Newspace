@@ -32,10 +32,8 @@ namespace Newspace {
 		InstrumentationSession* m_CurrentSession;
 		std::ofstream m_OutputStream;
 	public:
-		Instrumentor()
-			: m_CurrentSession(nullptr)
-		{
-		}
+		Instrumentor(const Instrumentor&) = delete;
+		Instrumentor(Instrumentor&&) = delete;
 
 		void BeginSession(const std::string& name, const std::string& filepath = "results.json")
 		{
@@ -105,7 +103,15 @@ namespace Newspace {
 		}
 
 	private:
+		Instrumentor()
+			: m_CurrentSession(nullptr)
+		{
+		}
 
+		~Instrumentor()
+		{
+			EndSession();
+		}
 		void WriteHeader()
 		{
 			m_OutputStream << "{\"otherData\": {},\"traceEvents\":[{}";

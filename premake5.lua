@@ -24,6 +24,8 @@ IncludeDir["Glad"] = "Newspace/vendor/Glad/include"
 IncludeDir["ImGui"] = "Newspace/vendor/imgui"
 IncludeDir["glm"] = "Newspace/vendor/glm"
 IncludeDir["stb_image"] = "Newspace/vendor/stb_image"
+IncludeDir["entt"] = "Newspace/vendor/entt/include"
+
 
 
 group "Dependencies"
@@ -69,7 +71,9 @@ project "Newspace"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.stb_image}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
+		
 	}
 
 	links 
@@ -124,7 +128,8 @@ project "Sandbox"
 		"Newspace/vendor/spdlog/include",
 		"Newspace/src",
 		"Newspace/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	links
@@ -177,7 +182,8 @@ project "Spacecap"
 		"Newspace/vendor/spdlog/include",
 		"Newspace/src",
 		"Newspace/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	links

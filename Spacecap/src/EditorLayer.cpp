@@ -15,12 +15,18 @@ namespace Newspace {
 	{
 		NSPACE_PROFILE_FUNCTION();
 
-		m_CheckerboardTexture = Newspace::Texture2D::Create("assets/textures/Checkerboard.png");
+		m_CheckerboardTexture = Texture2D::Create("assets/textures/Checkerboard.png");
 
-		Newspace::FramebufferSpecification fbSpec;
+		FramebufferSpecification fbSpec;
 		fbSpec.Width = 1280;
 		fbSpec.Height = 720;
-		m_Framebuffer = Newspace::Framebuffer::Create(fbSpec);
+		m_Framebuffer = Framebuffer::Create(fbSpec);
+
+		m_ActiveScene = CreateRef<Scene>();
+
+		auto square = m_ActiveScene->CreateEntity("Green Square");
+		square.AddComponent<SpriteRendererComponent>(glm::vec4{ 0.0f, 1.0f, 0.0f, 1.0f });
+		m_SquareEntity = square;
 	}
 
 	void EditorLayer::OnDetach()
@@ -28,11 +34,12 @@ namespace Newspace {
 		NSPACE_PROFILE_FUNCTION();
 	}
 
-	void EditorLayer::OnUpdate(Newspace::Timestep ts)
+	void EditorLayer::OnUpdate(Timestep ts)
 	{
 		NSPACE_PROFILE_FUNCTION();
 
-		if (Newspace::FramebufferSpecification spec = m_Framebuffer->GetSpecification();
+		// Resize
+		if (FramebufferSpecification spec = m_Framebuffer->GetSpecification();
 			m_ViewportSize.x > 0.0f && m_ViewportSize.y > 0.0f && // zero sized framebuffer is invalid
 			(spec.Width != m_ViewportSize.x || spec.Height != m_ViewportSize.y))
 		{
@@ -45,39 +52,19 @@ namespace Newspace {
 			m_CameraController.OnUpdate(ts);
 
 		// Render
-		Newspace::Renderer2D::ResetStats();
-		{
-			NSPACE_PROFILE_SCOPE("Renderer Prep");
-			m_Framebuffer->Bind();
-			Newspace::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-			Newspace::RenderCommand::Clear();
-		}
+		Renderer2D::ResetStats();
+		m_Framebuffer->Bind();
+		RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+		RenderCommand::Clear();
 
-		{
-			static float rotation = 0.0f;
-			rotation += ts * 50.0f;
+		Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-			NSPACE_PROFILE_SCOPE("Renderer Draw");
-			Newspace::Renderer2D::BeginScene(m_CameraController.GetCamera());
-			Newspace::Renderer2D::DrawRotatedQuad({ 1.0f, 0.0f }, { 0.8f, 0.8f }, -45.0f, { 0.8f, 0.2f, 0.3f, 1.0f });
-			Newspace::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
-			Newspace::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, m_SquareColor);
-			Newspace::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 20.0f, 20.0f }, m_CheckerboardTexture, 10.0f);
-			Newspace::Renderer2D::DrawRotatedQuad({ -2.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, rotation, m_CheckerboardTexture, 20.0f);
-			Newspace::Renderer2D::EndScene();
+		// Update scene
+		m_ActiveScene->OnUpdate(ts);
 
-			Newspace::Renderer2D::BeginScene(m_CameraController.GetCamera());
-			for (float y = -5.0f; y < 5.0f; y += 0.5f)
-			{
-				for (float x = -5.0f; x < 5.0f; x += 0.5f)
-				{
-					glm::vec4 color = { (x + 5.0f) / 10.0f, 0.4f, (y + 5.0f) / 10.0f, 0.7f };
-					Newspace::Renderer2D::DrawQuad({ x, y }, { 0.45f, 0.45f }, color);
-				}
-			}
-			Newspace::Renderer2D::EndScene();
-			m_Framebuffer->Unbind();
-		}
+		Renderer2D::EndScene();
+
+		m_Framebuffer->Unbind();
 	}
 
 	void EditorLayer::OnImGuiRender()
@@ -152,8 +139,16 @@ namespace Newspace {
 		ImGui::Text("Quads: %d", stats.QuadCount);
 		ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
 		ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
+		if (m_SquareEntity)
+		{
+			ImGui::Separator();
+			auto& tag = m_SquareEntity.GetComponent<TagComponent>().Tag;
+			ImGui::Text("%s", tag.c_str());
 
-		ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
+			auto& squareColor = m_SquareEntity.GetComponent<SpriteRendererComponent>().Color;
+			ImGui::ColorEdit4("Square Color", glm::value_ptr(squareColor));
+			ImGui::Separator();
+		}
 
 		ImGui::End();
 
@@ -173,7 +168,7 @@ namespace Newspace {
 		ImGui::End();
 	}
 
-	void EditorLayer::OnEvent(Newspace::Event& e)
+	void EditorLayer::OnEvent(Event& e)
 	{
 		m_CameraController.OnEvent(e);
 	}

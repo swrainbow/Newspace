@@ -15,6 +15,10 @@
 #include "Newspace/ImGui/ImGuiLayer.h"
 #include "Newspace/Renderer/OrthographicCameraController.h"
 
+#include "Newspace/Scene/Scene.h"
+#include "Newspace/Scene/Components.h"
+#include "Newspace/Scene/Entity.h"
+
 
 // ---Renderer------------------------
 #include "Newspace/Renderer/Renderer.h"
