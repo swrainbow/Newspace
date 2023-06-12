@@ -24,6 +24,7 @@ namespace Newspace {
 		//NSPACE_CORE_TRACE("  Vendor: {0}", glGetString(GL_VENDOR));
 		//NSPACE_CORE_TRACE("  Renderer: {0}", glGetString(GL_RENDERER));
 		//NSPACE_CORE_TRACE("  Version: {0}", glGetString(GL_VERSION));
+		NSPACE_CORE_ASSERT(GLVersion.major > 4 || (GLVersion.major == 4 && GLVersion.minor >= 5), "Hazel requires at least OpenGL version 4.5!");
 
 	}
 

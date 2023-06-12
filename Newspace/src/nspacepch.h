@@ -15,7 +15,7 @@
 
 #include "Newspace/Core/Log.h"
 #include "Newspace/Debug/Instrumentor.h"
-
+#include "Newspace/Core/Base.h"
 
 #ifdef NSPACE_PLATFORM_WINDOWS
 #include <Windows.h>

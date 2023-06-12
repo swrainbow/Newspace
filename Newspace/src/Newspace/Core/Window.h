@@ -1,6 +1,6 @@
 #pragma once
 
-#include "nspacepch.h"
+#include <sstream>
 
 #include "Newspace/Core/Base.h"
 #include "Newspace/Events/Event.h"

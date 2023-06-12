@@ -3,6 +3,9 @@
 #include "nspacepch.h"
 
 #include "Newspace/Core/Base.h"
+#include <functional>
+
+#include "Newspace/Debug/Instrumentor.h"
 
 namespace Newspace {
 
