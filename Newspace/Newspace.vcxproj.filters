@@ -1437,6 +1437,7 @@
     <ClInclude Include="src\Newspace\Scene\Entity.h" />
     <ClInclude Include="src\Newspace\Renderer\Camera.h" />
     <ClInclude Include="src\Newspace\Scene\SceneCamera.h" />
+    <ClInclude Include="src\Newspace\Scene\ScriptableEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Newspace\Core\Application.cpp">

@@ -18,6 +18,8 @@
 #include "Newspace/Scene/Scene.h"
 #include "Newspace/Scene/Components.h"
 #include "Newspace/Scene/Entity.h"
+#include "Newspace/Scene/ScriptableEntity.h"
+
 
 
 // ---Renderer------------------------
