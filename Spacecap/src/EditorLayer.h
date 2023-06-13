@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Newspace.h"
+#include "Panels/SceneHierarchyPanel.h"
 
 namespace Newspace {
 
@@ -36,6 +37,8 @@ namespace Newspace {
 		bool m_ViewportFocused = false, m_ViewportHovered = false;
 
 		glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
+
+		SceneHierarchyPanel m_SceneHierarchyPanel;
 	};
 
 }
