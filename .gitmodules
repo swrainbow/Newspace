@@ -6,10 +6,6 @@
 	path = Newspace/vendor/GLFW
 	url = https://github.com/TheCherno/glfw
 	branch = master
-[submodule "Newspace/vendor/imgui"]
-	path = Newspace/vendor/imgui
-	url = https://github.com/TheCherno/imgui
-	branch = docking
 [submodule "Newspace/vendor/glm"]
 	path = Newspace/vendor/glm
 	url = https://github.com/g-truc/glm
