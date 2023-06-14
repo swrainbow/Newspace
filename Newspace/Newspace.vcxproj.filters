@@ -117,6 +117,9 @@
     <ClInclude Include="src\Newspace\Renderer\Buffer.h">
       <Filter>src\Newspace\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Newspace\Renderer\Camera.h">
+      <Filter>src\Newspace\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Newspace\Renderer\Framebuffer.h">
       <Filter>src\Newspace\Renderer</Filter>
     </ClInclude>
@@ -153,7 +156,16 @@
     <ClInclude Include="src\Newspace\Scene\Components.h">
       <Filter>src\Newspace\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="src\Newspace\Scene\Entity.h">
+      <Filter>src\Newspace\Scene</Filter>
+    </ClInclude>
     <ClInclude Include="src\Newspace\Scene\Scene.h">
+      <Filter>src\Newspace\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Newspace\Scene\SceneCamera.h">
+      <Filter>src\Newspace\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Newspace\Scene\ScriptableEntity.h">
       <Filter>src\Newspace\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
@@ -1434,10 +1446,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Newspace\Scene\Entity.h" />
-    <ClInclude Include="src\Newspace\Renderer\Camera.h" />
-    <ClInclude Include="src\Newspace\Scene\SceneCamera.h" />
-    <ClInclude Include="src\Newspace\Scene\ScriptableEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Newspace\Core\Application.cpp">
@@ -1497,7 +1505,13 @@
     <ClCompile Include="src\Newspace\Renderer\VertexArray.cpp">
       <Filter>src\Newspace\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Newspace\Scene\Entity.cpp">
+      <Filter>src\Newspace\Scene</Filter>
+    </ClCompile>
     <ClCompile Include="src\Newspace\Scene\Scene.cpp">
+      <Filter>src\Newspace\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Newspace\Scene\SceneCamera.cpp">
       <Filter>src\Newspace\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1533,7 +1547,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Newspace\Scene\Entity.cpp" />
-    <ClCompile Include="src\Newspace\Scene\SceneCamera.cpp" />
   </ItemGroup>
 </Project>

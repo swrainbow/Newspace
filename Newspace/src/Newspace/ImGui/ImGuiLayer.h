@@ -18,6 +18,7 @@ namespace Newspace {
 		virtual void OnImGuiRender() override;
 		virtual void OnEvent(Event& e) override;
 
+		void SetDarkThemeColors();
 		void Begin();
 		void End();
 		void BlockEvents(bool block) { m_BlockEvents = block; }
