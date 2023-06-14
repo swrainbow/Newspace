@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="..">
+      <UniqueIdentifier>{61705900-4DFC-870B-B6AA-880BA255880B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\Newspace">
+      <UniqueIdentifier>{66FA8F77-D2AF-086D-5BA4-0244C758FF70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\Newspace\vendor">
+      <UniqueIdentifier>{03226129-EF05-227F-5866-1CD244690C01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\Newspace\vendor\GLFW">
+      <UniqueIdentifier>{2297E087-8ECE-281F-97D8-8C42038F4F18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\Newspace\vendor\Glad">
+      <UniqueIdentifier>{CA22E187-365A-291F-3F64-8D42AB1A5018}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\Newspace\vendor\imgui">
+      <UniqueIdentifier>{AD656D86-998A-BC06-C2D5-A196AE59BB24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\Newspace\vendor\spdlog">
+      <UniqueIdentifier>{DB30A26B-47F3-D5F5-90A3-6482FCA4AED3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\Newspace\vendor\yaml-cpp">
+      <UniqueIdentifier>{157CADF8-8189-DBDE-0A70-D7C9767CA795}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\Sandbox">
+      <UniqueIdentifier>{3F7B6B1D-2B33-AD6A-943A-86C68011485B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\Spacecap">
+      <UniqueIdentifier>{50B9202F-BC6E-9924-4563-93FBB1179028}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Newspace\premake5.lua">
+      <Filter>..\Newspace</Filter>
+    </None>
+    <None Include="..\..\Newspace\vendor\GLFW\premake5.lua">
+      <Filter>..\Newspace\vendor\GLFW</Filter>
+    </None>
+    <None Include="..\..\Newspace\vendor\Glad\premake5.lua">
+      <Filter>..\Newspace\vendor\Glad</Filter>
+    </None>
+    <None Include="..\..\Newspace\vendor\imgui\premake5.lua">
+      <Filter>..\Newspace\vendor\imgui</Filter>
+    </None>
+    <None Include="..\..\Newspace\vendor\spdlog\premake5.lua">
+      <Filter>..\Newspace\vendor\spdlog</Filter>
+    </None>
+    <None Include="..\..\Newspace\vendor\yaml-cpp\premake5.lua">
+      <Filter>..\Newspace\vendor\yaml-cpp</Filter>
+    </None>
+    <None Include="..\..\Sandbox\premake5.lua">
+      <Filter>..\Sandbox</Filter>
+    </None>
+    <None Include="..\..\Spacecap\premake5.lua">
+      <Filter>..\Spacecap</Filter>
+    </None>
+    <None Include="..\..\premake5.lua">
+      <Filter>..</Filter>
+    </None>
+    <None Include="premake5.lua" />
+  </ItemGroup>
+</Project>
