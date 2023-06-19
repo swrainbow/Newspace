@@ -13,3 +13,6 @@
 [submodule "Newspace/vendor/yaml-cpp"]
 	path = Newspace/vendor/yaml-cpp
 	url = https://github.com/thecherno/yaml-cpp
+[submodule "Newspace/vendor/ImGuizmo"]
+	path = Newspace/vendor/ImGuizmo
+	url = https://github.com/thecherno/imguizmo

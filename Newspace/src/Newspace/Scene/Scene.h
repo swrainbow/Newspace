@@ -19,6 +19,7 @@ namespace Newspace {
 		void DestroyEntity(Entity entity);
 
 		void OnViewportResize(uint32_t width, uint32_t height);
+		Entity GetPrimaryCameraEntity();
 		void OnUpdate(Timestep ts);
 	private:
 		template<typename T>

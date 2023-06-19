@@ -19,7 +19,8 @@ project "Spacecap"
 		"%{wks.location}/Newspace/src",
 		"%{wks.location}/Newspace/vendor",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.entt}"
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.ImGuizmo}"
 	}
 
 	links

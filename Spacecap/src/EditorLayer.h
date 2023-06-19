@@ -34,6 +34,7 @@ namespace Newspace {
 		Entity m_SquareEntity;
 		Entity m_CameraEntity;
 		Entity m_SecondCamera;
+		int m_GizmoType = -1;
 
 		bool m_PrimaryCamera = true;
 
