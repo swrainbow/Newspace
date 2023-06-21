@@ -1,10 +1,9 @@
 #pragma once
 
+
+#include "Newspace/Renderer/EditorCamera.h"
+
 #include "entt.hpp"
-
-
-#include "Newspace/Core/Timestep.h"
-
 namespace Newspace {
 
 	class Entity;
@@ -20,7 +19,8 @@ namespace Newspace {
 
 		void OnViewportResize(uint32_t width, uint32_t height);
 		Entity GetPrimaryCameraEntity();
-		void OnUpdate(Timestep ts);
+		void OnUpdateRuntime(Timestep ts);
+		void OnUpdateEditor(Timestep ts, EditorCamera& camera);
 	private:
 		template<typename T>
 		void OnComponentAdded(Entity entity, T& component);

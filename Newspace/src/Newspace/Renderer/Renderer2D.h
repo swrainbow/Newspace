@@ -4,6 +4,7 @@
 
 #include "Newspace/Renderer/Texture.h"
 #include "Newspace/Renderer/Camera.h"
+#include "Newspace/Renderer/EditorCamera.h"
 
 namespace Newspace {
 
@@ -15,6 +16,7 @@ namespace Newspace {
 
 		static void BeginScene(const Camera& camera, const glm::mat4& transform);
 		static void BeginScene(const OrthographicCamera& camera); // TODO: Remove
+		static void BeginScene(const EditorCamera& camera);
 		static void EndScene();
 		static void Flush();
 

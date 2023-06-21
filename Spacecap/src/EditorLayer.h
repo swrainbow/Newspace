@@ -2,7 +2,7 @@
 
 #include "Newspace.h"
 #include "Panels/SceneHierarchyPanel.h"
-
+#include "Newspace/Renderer/EditorCamera.h"
 namespace Newspace {
 
 	class EditorLayer : public Layer
@@ -37,7 +37,7 @@ namespace Newspace {
 		int m_GizmoType = -1;
 
 		bool m_PrimaryCamera = true;
-
+		EditorCamera m_EditorCamera;
 		Ref<Texture2D> m_CheckerboardTexture;
 
 		glm::vec2 m_ViewportSize = { 0.0f, 0.0f };
