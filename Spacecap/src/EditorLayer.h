@@ -34,6 +34,7 @@ namespace Newspace {
 		Entity m_SquareEntity;
 		Entity m_CameraEntity;
 		Entity m_SecondCamera;
+		Entity m_HoveredEntity;
 		int m_GizmoType = -1;
 
 		bool m_PrimaryCamera = true;
@@ -44,7 +45,7 @@ namespace Newspace {
 		bool m_ViewportFocused = false, m_ViewportHovered = false;
 
 		glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
-
+		glm::vec2 m_ViewportBounds[2];
 		SceneHierarchyPanel m_SceneHierarchyPanel;
 	};
 

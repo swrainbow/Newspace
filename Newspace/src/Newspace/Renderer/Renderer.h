@@ -5,6 +5,7 @@
 #include "Newspace/Renderer/OrthographicCamera.h"
 #include "Newspace/Renderer/Shader.h"
 
+
 namespace Newspace {
 
 	class Renderer
