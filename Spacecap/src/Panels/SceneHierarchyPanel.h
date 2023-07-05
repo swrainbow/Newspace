@@ -6,6 +6,7 @@
 #include "Newspace/Scene/Entity.h"
 
 namespace Newspace {
+	extern const std::filesystem::path g_AssetPath;
 
 	class SceneHierarchyPanel
 	{

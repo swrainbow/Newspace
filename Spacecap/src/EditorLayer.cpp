@@ -12,6 +12,8 @@
 
 namespace Newspace {
 
+	extern const std::filesystem::path g_AssetPath;
+
 	EditorLayer::EditorLayer()
 		: Layer("EditorLayer"), m_CameraController(1280.0f / 720.0f), m_SquareColor({ 0.2f, 0.3f, 0.8f, 1.0f })
 	{
@@ -22,7 +24,8 @@ namespace Newspace {
 		NSPACE_PROFILE_FUNCTION();
 
 		m_CheckerboardTexture = Texture2D::Create("assets/textures/Checkerboard.png");
-
+		m_IconPlay = Texture2D::Create("Resources/Icons/PlayButton.png");
+		m_IconStop = Texture2D::Create("Resources/Icons/StopButton.png");
 		FramebufferSpecification fbSpec;
 		fbSpec.Attachments = { FramebufferTextureFormat::RGBA8, FramebufferTextureFormat::RED_INTEGER, FramebufferTextureFormat::Depth };
 		fbSpec.Width = 1280;
@@ -105,10 +108,7 @@ namespace Newspace {
 		}
 
 		// Update
-		if (m_ViewportFocused)
-			m_CameraController.OnUpdate(ts);
 
-		m_EditorCamera.OnUpdate(ts);
 		// Render
 		Renderer2D::ResetStats();
 		m_Framebuffer->Bind();
@@ -117,7 +117,24 @@ namespace Newspace {
 
 		m_Framebuffer->ClearAttachment(1, -1);
 		// Update scene
-		m_ActiveScene->OnUpdateEditor(ts, m_EditorCamera);
+		switch (m_SceneState)
+		{
+		case SceneState::Edit:
+		{
+			if (m_ViewportFocused)
+				m_CameraController.OnUpdate(ts);
+
+			m_EditorCamera.OnUpdate(ts);
+
+			m_ActiveScene->OnUpdateEditor(ts, m_EditorCamera);
+			break;
+		}
+		case SceneState::Play:
+		{
+			m_ActiveScene->OnUpdateRuntime(ts);
+			break;
+		}
+		}
 		auto [mx, my] = ImGui::GetMousePos();
 		mx -= m_ViewportBounds[0].x;
 		my -= m_ViewportBounds[0].y;
@@ -213,6 +230,7 @@ namespace Newspace {
 			ImGui::EndMenuBar();
 		}
 		m_SceneHierarchyPanel.OnImGuiRender();
+		m_ContentBrowserPanel.OnImGuiRender();
 		ImGui::Begin("Stats");
 
 		std::string name = "None";
@@ -246,6 +264,15 @@ namespace Newspace {
 		uint32_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
 		ImGui::Image((void*)textureID, ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
 
+		if (ImGui::BeginDragDropTarget())
+		{
+			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM"))
+			{
+				const wchar_t* path = (const wchar_t*)payload->Data;
+				OpenScene(std::filesystem::path(g_AssetPath) / path);
+			}
+			ImGui::EndDragDropTarget();
+		}
 
 		// Gizmos
 		Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity();
@@ -296,6 +323,36 @@ namespace Newspace {
 		}
 		ImGui::End();
 		ImGui::PopStyleVar();
+		UI_Toolbar();
+
+		ImGui::End();
+	}
+
+	void EditorLayer::UI_Toolbar()
+	{
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 2));
+		ImGui::PushStyleVar(ImGuiStyleVar_ItemInnerSpacing, ImVec2(0, 0));
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
+		auto& colors = ImGui::GetStyle().Colors;
+		const auto& buttonHovered = colors[ImGuiCol_ButtonHovered];
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(buttonHovered.x, buttonHovered.y, buttonHovered.z, 0.5f));
+		const auto& buttonActive = colors[ImGuiCol_ButtonActive];
+		ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(buttonActive.x, buttonActive.y, buttonActive.z, 0.5f));
+
+		ImGui::Begin("##toolbar", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
+
+		float size = ImGui::GetWindowHeight() - 4.0f;
+		Ref<Texture2D> icon = m_SceneState == SceneState::Edit ? m_IconPlay : m_IconStop;
+		ImGui::SetCursorPosX((ImGui::GetWindowContentRegionMax().x * 0.5f) - (size * 0.5f));
+		if (ImGui::ImageButton((ImTextureID)icon->GetRendererID(), ImVec2(size, size), ImVec2(0, 0), ImVec2(1, 1), 0))
+		{
+			if (m_SceneState == SceneState::Edit)
+				OnScenePlay();
+			else if (m_SceneState == SceneState::Play)
+				OnSceneStop();
+		}
+		ImGui::PopStyleVar(2);
+		ImGui::PopStyleColor(3);
 
 		ImGui::End();
 	}
@@ -390,14 +447,17 @@ namespace Newspace {
 	{
 		std::optional<std::string> filepath = FileDialogs::OpenFile("Hazel Scene (*.hazel)\0*.hazel\0");
 		if (filepath)
-		{
-			m_ActiveScene = CreateRef<Scene>();
-			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
-			m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+			OpenScene(filepath.value());
+	}
 
-			SceneSerializer serializer(m_ActiveScene);
-			serializer.Deserialize(*filepath);
-		}
+	void EditorLayer::OpenScene(const std::filesystem::path& path)
+	{
+		m_ActiveScene = CreateRef<Scene>();
+		m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+
+		SceneSerializer serializer(m_ActiveScene);
+		serializer.Deserialize(path.string());
 	}
 
 	void EditorLayer::SaveSceneAs()
@@ -408,6 +468,18 @@ namespace Newspace {
 			SceneSerializer serializer(m_ActiveScene);
 			serializer.Serialize(*filepath);
 		}
+	}
+
+	void EditorLayer::OnScenePlay()
+	{
+		m_SceneState = SceneState::Play;
+	}
+
+
+	void EditorLayer::OnSceneStop()
+	{
+		m_SceneState = SceneState::Edit;
+
 	}
 
 }
