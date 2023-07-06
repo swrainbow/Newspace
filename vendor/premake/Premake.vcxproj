@@ -78,6 +78,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="..\..\Newspace\premake5.lua" />
+    <None Include="..\..\Newspace\vendor\Box2D\premake5.lua" />
     <None Include="..\..\Newspace\vendor\GLFW\premake5.lua" />
     <None Include="..\..\Newspace\vendor\Glad\premake5.lua" />
     <None Include="..\..\Newspace\vendor\imgui\premake5.lua" />

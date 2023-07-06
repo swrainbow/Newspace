@@ -10,6 +10,9 @@
     <Filter Include="..\Newspace\vendor">
       <UniqueIdentifier>{03226129-EF05-227F-5866-1CD244690C01}</UniqueIdentifier>
     </Filter>
+    <Filter Include="..\Newspace\vendor\Box2D">
+      <UniqueIdentifier>{5102AD83-3D27-FC03-6672-E19352F6FA21}</UniqueIdentifier>
+    </Filter>
     <Filter Include="..\Newspace\vendor\GLFW">
       <UniqueIdentifier>{2297E087-8ECE-281F-97D8-8C42038F4F18}</UniqueIdentifier>
     </Filter>
@@ -35,6 +38,9 @@
   <ItemGroup>
     <None Include="..\..\Newspace\premake5.lua">
       <Filter>..\Newspace</Filter>
+    </None>
+    <None Include="..\..\Newspace\vendor\Box2D\premake5.lua">
+      <Filter>..\Newspace\vendor\Box2D</Filter>
     </None>
     <None Include="..\..\Newspace\vendor\GLFW\premake5.lua">
       <Filter>..\Newspace\vendor\GLFW</Filter>

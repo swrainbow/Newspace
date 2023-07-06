@@ -16,3 +16,6 @@
 [submodule "Newspace/vendor/ImGuizmo"]
 	path = Newspace/vendor/ImGuizmo
 	url = https://github.com/thecherno/imguizmo
+[submodule "Newspace/vendor/Box2D"]
+	path = Newspace/vendor/Box2D
+	url = https://github.com/thecherno/box2d

@@ -25,7 +25,7 @@ project "Spacecap"
 
 	links
 	{
-		"Newspace"
+		"Newspace",
 	}
 
 	filter "system:windows"
